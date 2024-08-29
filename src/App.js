@@ -6,7 +6,7 @@ import { fetchTransactions } from './services/TransactionData';
 
 function App() {
   const [transaction, setTransactions] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); //loading default state is false
   const [error, setError] = useState(null);
 
   useEffect(() => {

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { calculatePoints } from '../utils/rewardPointCalculator';
 
 const CustPurchaseSummary = ({ transactions }) => {
-  const customerPointsMonthly = {};
-
+  //useMemo will ensure that the calculation only runs when the transactions prop changes.
+  const customerPointsMonthly = useMemo(()=>{
+  const points = {};
   // Calculate points per month per customer
   transactions.forEach((transaction) => {
     const date = new Date(transaction.date);
@@ -21,6 +22,8 @@ const CustPurchaseSummary = ({ transactions }) => {
 
     customerPointsMonthly[transaction.customerId][displayMonthYear] += calculatePoints(transaction.amount);
   });
+  return points;
+  },[transactions])
 
   // Calculate total points for each customer
   const totalPoints = {};
