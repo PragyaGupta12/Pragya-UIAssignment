@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import CustomerSummary from '../components/CustomerSummary';
+import CustPurchaseSummary from '../../Components/CustPurchaseSummary';
 
 const transactions = [
     { customerId: 1, amount: 120, date: '2024-05-10', transactionId: 1 },
@@ -14,7 +14,7 @@ const transactions = [
 
 describe('CustomerSummary Component', () => {
   it('should render customer points summary correctly', () => {
-    render(<CustomerSummary transactions={transactions} />);
+    render(<CustPurchaseSummary transactions={transactions} />);
 
     //Check for customer 1
     expect(screen.getByText('Customer 1')).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe('CustomerSummary Component', () => {
   });
 
   it('should display a message when there are no transactions', () => {
-    render(<CustomerSummary transactions={[]} />);
+    render(<CustPurchaseSummary transactions={[]} />);
     expect(screen.getByText('No data available')).toBeInTheDocument();
   });
 });

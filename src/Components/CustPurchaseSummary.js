@@ -26,6 +26,9 @@ const CustPurchaseSummary = ({ transactions }) => {
     return points;
   }, [transactions]);
 
+  if (transactions.length === 0) {
+    return <p>No data available</p>;
+  }
   // Calculate total points for each customer
   const totalPoints = {};
   Object.keys(customerPointsMonthly).forEach((customerId) => {

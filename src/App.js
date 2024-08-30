@@ -14,7 +14,7 @@ function App() {
       try {
         const data = await fetchTransactions();
         setTransactions(data);
-        setLoading(false);
+        setLoading(true);
       } catch (err) {
         setError('Failed to fetch transactions.');
         setLoading(false);
