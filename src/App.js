@@ -11,10 +11,11 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Set loading to true when starting the fetch
       try {
         const data = await fetchTransactions();
         setTransactions(data);
-        setLoading(true);
+        setLoading(false); // Set loading to false after successful fetch
       } catch (err) {
         setError('Failed to fetch transactions.');
         setLoading(false);

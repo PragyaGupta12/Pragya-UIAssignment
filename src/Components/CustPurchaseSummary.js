@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import { calculatePoints } from "../utils/rewardPointCalculator";
 
-const CustPurchaseSummary = ({ transactions }) => {
+//This will ensure that the component only re-renders if its props change.
+const CustPurchaseSummary = React.memo(({ transactions }) => {
   //useMemo will ensure that the calculation only runs when the transactions prop changes.
   const customerPointsMonthly = useMemo(() => {
     const points = {};
@@ -64,6 +65,6 @@ const CustPurchaseSummary = ({ transactions }) => {
       </ul>
     </div>
   );
-};
+});
 
 export default CustPurchaseSummary;
