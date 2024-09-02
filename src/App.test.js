@@ -1,12 +1,10 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders reward calculator title', async () => {
+test('renders reward calculator title after loading', async () => {
   render(<App />);
 
-  // Wait for the loading state to complete and the text to appear
-  await waitFor(() => {
-    const linkElement = screen.getByText(/reward calculator for customers/i);
-    expect(linkElement).toBeInTheDocument();
-  });
+  // Wait for the title to appear, implicitly waiting for loading to disappear
+  const linkElement = await screen.findByText(/reward calculator for customers/i);
+  expect(linkElement).toBeInTheDocument();
 });
